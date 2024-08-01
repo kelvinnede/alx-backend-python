@@ -14,7 +14,7 @@ def safely_get_value(
     dct: Mapping[Any, T],
     key: Any,
     default: Union[T, None] = None
-) -> Union[T, None]:
+) -> Union[Any, T]:
     """
     Retrieves the value associated with a key from a dictionary
     or returns a default value if the key is not found.
