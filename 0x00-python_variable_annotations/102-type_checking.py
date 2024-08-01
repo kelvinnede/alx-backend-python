@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """
-This module contains a function to zoom in on an array by repeating its elements.
+This module contains a function to zoom in on an array
+by repeating its elements.
 """
 
 from typing import List
+
 
 def zoom_array(lst: List[int], factor: int = 2) -> List[int]:
     """
@@ -11,7 +13,8 @@ def zoom_array(lst: List[int], factor: int = 2) -> List[int]:
 
     Args:
         lst (List[int]): The list of integers to zoom in on.
-        factor (int, optional): The number of times each element should be repeated. Defaults to 2.
+        factor (int, optional): The number of times each element
+        should be repeated. Defaults to 2.
 
     Returns:
         List[int]: A list with the elements repeated according to the factor.
