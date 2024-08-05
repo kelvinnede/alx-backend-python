@@ -1,25 +1,25 @@
 #!/usr/bin/env python3
 """
-This module contains a function that executes multiple asynchronous
-tasks concurrently and returns their results in ascending order.
+This module contains an async function that spawns
+multiple task_wait_random tasks.
 """
 
-import asyncio
 from typing import List
-from 3-tasks import task_wait_random
+import asyncio
+from tasks import task_wait_random
 
 
 async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
-    Executes multiple task_wait_random coroutines concurrently.
+    Spawns task_wait_random n times with the specified max_delay.
 
     Args:
-        n (int): The number of times to call task_wait_random.
-        max_delay (int): The maximum delay for task_wait_random.
+        n (int): Number of times to spawn task_wait_random.
+        max_delay (int): Maximum delay for task_wait_random.
 
     Returns:
-        List[float]: A list of all the delays in ascending order.
+        List[float]: List of delays in ascending order.
     """
     tasks = [task_wait_random(max_delay) for _ in range(n)]
-    delays = await asyncio.gather(*tasks)
-    return sorted(delays)
+    delays = [await task for task in asyncio.as_completed(tasks)]
+    return delays
